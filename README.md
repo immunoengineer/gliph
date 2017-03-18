@@ -1,8 +1,6 @@
 # gliph
 
-================================================================
-GROUPING OF LYMPHOCYTE INTERACTIONS BY PARATOPE HOTSPOTS - GLIPH
-================================================================
+* GROUPING OF LYMPHOCYTE INTERACTIONS BY PARATOPE HOTSPOTS - GLIPH
 
 Questions? Comments? Contact
    jakeg@stanford.edu / jake@hackbio.com
