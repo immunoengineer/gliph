@@ -14,7 +14,12 @@ Name
 Synopsis
 --------
 
-  gliph [options ] --tcr TCR_TABLE  --hla HLA_TABLE
+  gliph-group-discovery.pl [options ] --tcr TCR_TABLE
+
+  gliph-group-scoring.pl --convergence_file TCR_TABLE-convergence-groups.txt \
+                         --clone_annotations TCR_TABLE \
+                         --hla_file HLA_TABLE \
+                         --motif_pval_file TCR_TABLE.minp.ove10.txt
 
 Description
 -----------
@@ -34,6 +39,21 @@ and for each group, a collection of scores for that group indicating
 enrichment for motif, V-gene, CDR3 length, shared HLA among contributors,
 and proliferation count. When HLA data is available, it predicts the
 likely HLA that the set of TCRs recognizes. 
+
+Installation
+------------
+
+First, unpack gliph:
+
+tar -xzvf gliph-1.0.tgz
+
+You are done. The gliph commands are found in 
+             
+gliph/bin/gliph-group-discovery.pl
+gliph/bin/gliph-group-scoring.pl
+
+Optionally, for added convenience, you could add the path to your gliph/bin
+directory to your system $PATH.  
 
 Options
 -------
@@ -439,4 +459,23 @@ present by chance.
 Examples
 --------
 
-   gliph --tcr TCR_TABLE --hla HLA_TABLE
+To run GLIPH on a TCR_TABLE file mytcrtable.txt, run:
+gliph-group-discovery.pl --tcr mytcrtable.txt
+
+Tun run GLIPH on a list of CDR3s mycdr3list.txt, run:
+gliph-group-discovery.pl --tcr mycdr3list.txt
+
+To run GLIPH with an alternative mouse reference DB mouseDB.fa, run:
+gliph-group-discovery.pl --tcr mytcrtable --refdb=mouseDB.fa
+                                       
+To run GLIPH slower with a more thorough simdepth, run
+gliph-group-discovery.pl --tcr mytcrtable.txt --simdepth=10000
+
+To run GLIPH slower with a more thorough simdepth and an altered lcminp, run
+gliph-group-discovery.pl --tcr mytcrtable.txt --simdepth=10000 --lcminp=0.001
+
+To score GLIPH clusters, run 
+  gliph-group-scoring.pl --convergence_file TCR_TABLE-convergence-groups.txt \
+                         --clone_annotations TCR_TABLE \
+                         --hla_file HLA_TABLE \
+                         --motif_pval_file TCR_TABLE.minp.ove10.txt
